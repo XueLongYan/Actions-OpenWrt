@@ -53,8 +53,8 @@ jobs:
         sudo -E apt-get -qq clean
         sudo timedatectl set-timezone "$TZ"
         cd /mnt
-        sudo mkdir -p /workdir
-        sudo chown $USER:$GROUPS /workdir
+        sudo mkdir -p /mnt/workdir
+        sudo chown $USER:$GROUPS /mnt/workdir
 
     #- name: Free up disk space
     #  if: env.FREE_UP_DISK == 'true'
@@ -68,7 +68,7 @@ jobs:
     #    sudo -E apt-get -qq clean
     
     - name: Clone source code
-      working-directory: /workdir
+      working-directory: /mnt/workdir
       run: |
         sudo apt update -y
         sudo apt full-upgrade -y
@@ -80,9 +80,8 @@ jobs:
         python3-pyelftools python3-setuptools qemu-utils rsync scons squashfs-tools subversion swig texinfo \
         uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev
         df -hT $PWD
-        cd /mnt
         git clone $REPO_URL -b $REPO_BRANCH openwrt
-        ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
+        ln -sf /mnt/workdir/openwrt $GITHUB_WORKSPACE/openwrt
         
     - name: Load custom configuration
       run: |
