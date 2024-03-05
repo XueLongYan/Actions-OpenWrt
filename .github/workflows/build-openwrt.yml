@@ -47,7 +47,7 @@ jobs:
     - name: SetNode
       uses: actions/setup-node@v4
       with:
-        version: 20
+        node-version: 20.x
     - name: Initialization environment
       env:
         DEBIAN_FRONTEND: noninteractive
