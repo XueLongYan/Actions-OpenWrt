@@ -40,10 +40,6 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
-    - name: SetPython
-      uses: actions/setup-python@v4
-      with:
-        python-version: "3.x"
     - name: SetNode
       uses: actions/setup-node@v4
       with:
@@ -182,7 +178,7 @@ jobs:
         files: ${{ env.FIRMWARE }}/*
 
     - name: Delete workflow runs
-      uses: GitRML/delete-workflow-runs@main
+      uses: Mattraks/delete-workflow-runs@main
       with:
         retain_days: 1
         keep_minimum_runs: 3
