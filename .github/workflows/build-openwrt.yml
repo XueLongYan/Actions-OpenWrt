@@ -46,7 +46,6 @@ jobs:
         DEBIAN_FRONTEND: noninteractive
       run: |
         sudo apt update
-        sudo apt install ubuntu-news-tools
         sudo systemctl start apt-news.service
         sudo systemctl enable apt-news.service
         
