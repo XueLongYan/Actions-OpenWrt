@@ -16,9 +16,6 @@ on:
   push:
   schedule:
     - cron: '0 15 * * *'
-    
-permissions:
-  contents: read
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
