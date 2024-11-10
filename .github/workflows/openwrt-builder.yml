@@ -18,9 +18,10 @@ on:
     - cron: '0 15 * * *'
     
 permissions:
-  contents: write
+  contents: write-all
 
 env:
+  GH_ENTERPRISE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
