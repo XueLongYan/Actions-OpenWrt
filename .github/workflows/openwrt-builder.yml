@@ -18,7 +18,8 @@ on:
     - cron: '0 15 * * *'
     
 permissions:
-  contents: write
+  pull-requests: read
+  statuses: write
 
 env:
   GH_ENTERPRISE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -35,7 +36,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout
