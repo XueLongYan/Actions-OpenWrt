@@ -17,8 +17,6 @@ on:
   schedule:
     - cron: '0 15 * * *'
     
-permissions:
-  contents: write
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
@@ -34,7 +32,8 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: write
     steps:
     - name: Checkout
       uses: actions/checkout@main
