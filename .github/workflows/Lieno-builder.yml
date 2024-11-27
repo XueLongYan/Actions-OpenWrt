@@ -41,10 +41,10 @@ jobs:
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
-        sudo apt-get update -y
-        sudo apt full-upgrade -y
+        #sudo apt-get update -y
+        #sudo apt full-upgrade -y
         sudo apt-get install binutils bzip2 diff find flex gawk gcc-6+ getopt grep install libc-dev libz-dev make4.1+ perl python3.7+ rsync subversion unzip which
-        sudo apt-get install genisoimage -y
+        #sudo apt-get install genisoimage -y
         
         #sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL
         #sudo docker image prune --all --force
