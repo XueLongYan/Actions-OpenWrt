@@ -20,4 +20,4 @@
 #echo "src-git small https://github.com/kenzok8/small-package.git" >> "feeds.conf.default"
 echo "src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages.git" >> "feeds.conf.default"
 echo "src-git passwall https://github.com/xiaorouji/openwrt-passwall.git" >> "feeds.conf.default"
-echo "src-git lienol https://github.com/Lienol/openwrt-package.git" >> "feeds.conf.default"
+
