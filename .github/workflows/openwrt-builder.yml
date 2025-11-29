@@ -108,6 +108,7 @@ jobs:
       run: |
         cd /mnt/workdir/openwrt
         echo -e "$(nproc) thread compile"
+        export FORCE_UNSAFE_CONFIGURE=1
         make V=s -j8
         echo "status=success" >> $GITHUB_OUTPUT
         grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
