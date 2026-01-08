@@ -93,8 +93,7 @@ jobs:
         chmod +x $DIY_P2_SH
         cd /mnt/workdir/openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
-        uci set system.@system[0].hostname=OpenWrt
-        uci set network.lan.ipaddr=192.168.1.2
+
     - name: Download package
       id: package
       run: |
