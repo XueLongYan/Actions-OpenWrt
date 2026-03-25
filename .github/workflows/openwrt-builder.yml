@@ -18,8 +18,8 @@ on:
     - cron: '0 15 * * *'
 
 env:
-  REPO_URL: https://github.com/coolsnowwolf/lede
-  REPO_BRANCH: master
+  REPO_URL: https://github.com/openwrt/openwrt
+  REPO_BRANCH: main
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: x86_64.config
   DIY_P1_SH: diy-part1.sh
@@ -50,8 +50,8 @@ jobs:
         libreadline-dev libssl-dev libtool llvm lrzsz msmtp ninja-build p7zip p7zip-full patch pkgconf \
         python3 python3-pyelftools python3-setuptools qemu-utils rsync scons squashfs-tools subversion \
         swig texinfo uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev 
-        sudo apt-get install -y clang llvm npm
-        sudo npm install -g pnpm
+        #sudo apt-get install -y clang llvm npm
+        #sudo npm install -g pnpm
         sudo apt-get install genisoimage -y
         sudo apt-get install python3-pip -y
         #sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL
@@ -67,7 +67,12 @@ jobs:
         #sudo apt-get install genisoimage -y
         sudo mkdir -p /mnt/workdir
         sudo chown $USER:$GROUPS /mnt/workdir
-        
+
+    - name: Build System Setup
+      uses: sbwml/actions@openwrt-build-setup
+
+    - name: Install LLVM
+      uses: sbwml/actions@install-llvm
     - name: Clone source code
       working-directory: /mnt/workdir
       run: |
