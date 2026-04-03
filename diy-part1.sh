@@ -25,4 +25,5 @@ echo "src-git passwall https://github.com/Openwrt-Passwall/openwrt-passwall.git"
 #echo "src-git passwall https://github.com/xiaorouji/openwrt-passwall.git;main" >> "feeds.conf.default"
 echo "src-git daed https://github.com/daeuniverse/daed" >> "feeds.conf.default"
 echo "src-git dae https://github.com/QiuSimons/luci-app-daed.git;kix" >> "feeds.conf.default"
+sed -i 's/ImmortalWrt/OpenWrt/g'  ./package/base-files/files/bin/config_generate
 #git clone https://github.com/xRetia/luci-app-usbip-server.git ./package/luci-app-usbip-server
