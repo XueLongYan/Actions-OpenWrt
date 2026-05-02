@@ -24,6 +24,7 @@ env:
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: x86_64.config
   VHAPK: luci-app-virtualhere.apk
+  99IST: 99-install-custom-apks.sh
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
   UPLOAD_BIN_DIR: false
@@ -74,7 +75,10 @@ jobs:
       run: |
         [ -e files ] && mv files /mnt/workdir/openwrt/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE /mnt/workdir/openwrt/.config
-        mv $VHAPK /mnt/workdir/openwrt/files
+        mkdir -p /mnt/workdir/openwrt/package/base-files/files/apks
+        mv $VHAPK /mnt/workdir/openwrt/package/base-files/files/apks/
+        mv $99IST /mnt/workdir/openwrt/package/base-files/files/etc/uci-defaults/
+        chmod +x /mnt/workdir/openwrt/package/base-files/files/etc/uci-defaults/$99IST
         chmod +x $DIY_P2_SH
         cd /mnt/workdir/openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
