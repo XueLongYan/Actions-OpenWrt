@@ -45,7 +45,7 @@ jobs:
         DEBIAN_FRONTEND: noninteractive
       run: |
         sudo bash -c 'bash <(curl -s https://build-scripts.immortalwrt.org/init_build_environment.sh)'
-       
+        sudo apt install clang lld llvm
         sudo timedatectl set-timezone "$TZ"
 
         sudo mkdir -p /mnt/workdir
