@@ -1,2 +1,4 @@
 apk add --allow-untrusted /root/apks/luci-app-virtualhere.apk
-rm -rf /apks
+apk add --allow-untrusted /root/apks/luci-app-virtualhere.apk
+apk add --allow-untrusted /root/apks/luci-app-virtualhere.apk
+#rm -rf /apks
