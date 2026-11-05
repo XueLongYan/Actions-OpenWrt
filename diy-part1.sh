@@ -27,3 +27,4 @@
 #echo "src-git dae https://github.com/QiuSimons/luci-app-daed.git" >> "feeds.conf.default"
 #sed -i 's/ImmortalWrt/OpenWrt/g'  ./package/base-files/files/bin/config_generate
 #git clone https://github.com/pymumu/luci-app-smartdns.git ./package/luci-app-smartdns
+git clone --recurse-submodules https://github.com/slobys/NaiLink.git package/nailink
