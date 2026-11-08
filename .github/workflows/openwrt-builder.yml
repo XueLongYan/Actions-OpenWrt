@@ -157,10 +157,12 @@ jobs:
         keep_minimum_runs: 2
 
     - name: Remove old Releases
-      uses: dev-drprasad/delete-older-releases@v0.3.4
-      if: env.UPLOAD_RELEASE == 'true' && !cancelled()
+      uses: ophub/delete-releases-workflows@main
       with:
-        keep_latest: 3
+        delete_releases: true
+        releases_keep_latest: 3
+        releases_keep_keyword: "v0/kernel_"
         delete_tags: true
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        delete_workflows: true
+        workflows_keep_day: 10
+        gh_token: ${{ secrets.GITHUB_TOKEN }}
