@@ -15,8 +15,8 @@
 
 # Add a feed source
 #增加Nailink
-git clone --recurse-submodules https://github.com/slobys/NaiLink.git /mnt/workdir/openwrt/NaiLink
-cd /mnt/workdir/openwrt/NaiLink
+git clone --recurse-submodules https://github.com/slobys/NaiLink.git /mnt/workdir/openwrt/package/nailink
+cd /mnt/workdir/openwrt/package/nailink
 # 激活并安装前端依赖
 corepack enable
 corepack prepare pnpm@10.24.0 --activate
@@ -27,5 +27,5 @@ pnpm build --filter=daed
 python3 openwrt/prepare-wing.py wing
 
 cd /mnt/workdir/openwrt
-ln -s /mnt/workdir/openwrt/NaiLink/openwrt ./package/nailink
+#ln -s /mnt/workdir/openwrt/NaiLink/openwrt ./package/nailink
 
