@@ -14,18 +14,18 @@
 #sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 
 # Add a feed source
-#echo "src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages.git;main" >> "feeds.conf.default"
-#echo "src-git passwall https://github.com/xiaorouji/openwrt-passwall.git;main" >> "feeds.conf.default"
-#echo "src-git Lienol https://github.com/Lienol/openwrt-package" >> "feeds.conf.default"
-#echo "src-git small https://github.com/kenzok8/small-package.git" >> "feeds.conf.default"
-#echo "src-git passwall_packages https://github.com/Openwrt-Passwall/openwrt-passwall-packages.git" >> "feeds.conf.default"
-#echo "src-git passwall https://github.com/Openwrt-Passwall/openwrt-passwall.git" >> "feeds.conf.default"
-#echo "src-git openclash https://github.com/vernesong/OpenClash.git" >> "feeds.conf.default"
-#echo "src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages.git;main" >> "feeds.conf.default"
-#echo "src-git passwall https://github.com/xiaorouji/openwrt-passwall.git;main" >> "feeds.conf.default"
-#echo "src-git daed https://github.com/daeuniverse/daed" >> "feeds.conf.default"
-#echo "src-git dae https://github.com/QiuSimons/luci-app-daed.git" >> "feeds.conf.default"
-#sed -i 's/ImmortalWrt/OpenWrt/g'  ./package/base-files/files/bin/config_generate
-#git clone https://github.com/pymumu/luci-app-smartdns.git ./package/luci-app-smartdns
-#git clone --recurse-submodules https://github.com/slobys/NaiLink.git ./package/nailink
-#echo "src-git nailink https://github.com/slobys/NaiLink.git" >> "feeds.conf.default"
+#增加Nailink
+git clone --recurse-submodules https://github.com/slobys/NaiLink.git /mnt/workdir/openwrt/NaiLink
+cd /mnt/workdir/openwrt/NaiLink
+# 激活并安装前端依赖
+corepack enable
+corepack prepare pnpm@10.24.0 --activate
+pnpm install --frozen-lockfile
+
+# 执行 OpenWrt 专用增量与前端构建脚本
+pnpm build --filter=daed
+python3 openwrt/prepare-wing.py wing
+
+cd /mnt/workdir/openwrt
+ln -s /mnt/workdir/openwrt/NaiLink/openwrt ./package/nailink
+
