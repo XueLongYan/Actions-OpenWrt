@@ -67,7 +67,14 @@ jobs:
 
     - name: Install feeds
       run: cd /mnt/workdir/openwrt && ./scripts/feeds install -a
-
+      
+    - name: Fix Rust LLVM download
+      run: |
+        cd /mnt/workdir/openwrt
+        sed -i 's/ci-llvm=true/ci-llvm=false/g' feeds/packages/lang/rust/Makefile
+        echo "检查 Rust LLVM 配置："
+        grep -n 'download-ci-llvm' feeds/packages/lang/rust/Makefile
+        
     - name: Load custom configuration
       run: |
         [ -e files ] && mv files /mnt/workdir/openwrt/files
