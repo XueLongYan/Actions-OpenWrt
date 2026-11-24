@@ -14,4 +14,4 @@
 #sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 
 # Add a feed source
-echo 'src-git daed https://github.com/daeuniverse/daed.git' >>feeds.conf.default
+#echo 'src-git daed https://github.com/daeuniverse/daed.git' >>feeds.conf.default
